@@ -1,4 +1,4 @@
-# Builds the site (feed.json + events.ics + feed.xml + dashboard) and deploys
+# Builds the site (feed.json + feed.ics + feed.xml + dashboard) and deploys
 # it to GitHub Pages. All logic lives in OpenTechEvents/ote-tools — this file
 # only calls it. @main will become @v1 once the reusable workflows stabilise.
 name: Publish

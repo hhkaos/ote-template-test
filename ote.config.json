@@ -2,6 +2,7 @@
   "_comment": "Your community's configuration. The central OTE tools (editor, publish, exports) read this file from your fork. Keys starting with '_' are comments — safe to delete.",
 
   "_comment_feed": "Metadata for your published feed (feed.json, ICS, RSS). Edit these three values after forking.",
+  "_comment_license": "License of your event DATA (not of the events themselves). Recommended: CC0-1.0 (public domain, most permissive — anyone can republish, default) or CC-BY-4.0 (requires attribution). Any SPDX identifier or URL works.",
   "feed": {
     "title": "hhkaos Community",
     "description": "Talks, workshops and meetups organised by hhkaos.",
