@@ -49,9 +49,10 @@ El Pages del fork sirve una página estática mínima que **enlaza a las herrami
 
 ```
 https://tools.opentechevents.org/editor?repo=usuario/mi-comunidad
-https://tools.opentechevents.org/import?repo=usuario/mi-comunidad
 https://tools.opentechevents.org/publish?repo=usuario/mi-comunidad
 ```
+
+El editor absorbe la importación (crear, importar y editar eventos en una sola UI); no hay herramienta `/import` separada. En la UI, `/editor` se etiqueta "Manage events" y `/publish` "Promote" (difundir el evento a otras plataformas — el feed ya es la publicación).
 
 Cada herramienta lee `?repo=`, hace `fetch` del feed y del `ote.config.json` vía `raw.githubusercontent.com` (CORS abierto) y renderiza. El fork sigue siendo datos + config + una página tonta; las herramientas evolucionan sin tocar ningún fork, y siempre saben qué repositorio están "editando".
 
