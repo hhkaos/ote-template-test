@@ -13,6 +13,7 @@
   code { background: #f2f2f2; padding: .1rem .3rem; border-radius: 3px; }
   footer { margin-top: 2rem; font-size: .85rem; color: #666; }
   .warn { color: #a00; }
+  .banner { background: #fff8e1; border: 1px solid #e6c200; border-radius: 6px; padding: .6rem .8rem; font-size: .95rem; }
 </style>
 </head>
 <body>
@@ -28,9 +29,9 @@
 
 <h2>Tools</h2>
 <ul id="tools">
-  <li><a id="editor" href="#">Edit events</a> — create, edit or delete events without writing JSON</li>
-  <li><a id="import" href="#">Import</a> — bring events from an .ics file or an event page</li>
-  <li><a id="publish" href="#">Publish</a> — spread an event to other platforms</li>
+  <li><a id="editor" href="#">Manage events</a> — create, import, edit or delete events from a simple UI</li>
+  <li><a id="publish" href="#">Promote</a> — spread your event to other platforms</li>
+  <li><a id="preview" href="#">Preview feed</a> — human-readable view of your generated feeds</li>
 </ul>
 
 <footer>
@@ -55,7 +56,7 @@
   if (repo) {
     el.textContent = repo;
     var base = "https://tools.opentechevents.org/";
-    ["editor", "import", "publish"].forEach(function (t) {
+    ["editor", "publish", "preview"].forEach(function (t) {
       document.getElementById(t).href = base + t + "?repo=" + encodeURIComponent(repo);
     });
   } else {
@@ -66,6 +67,30 @@
       '<p class="warn">Could not detect the repository from this URL. If you use a custom domain, add a <code>config.js</code> with <code>window.OTE_REPO = "user/repo"</code>.</p>'
     );
   }
+
+  // Adopter registry check: if this feed isn't listed in the OTE adopters
+  // registry, invite the organizer to register it. Fails silently (network
+  // error, CORS, local preview) — the banner only shows on a confirmed miss.
+  (function () {
+    if (/^(localhost|127\.|0\.0\.0\.0)/.test(location.hostname)) return;
+    var feedUrl = new URL("feed.json", location.href).href;
+    fetch("https://opentechevents.org/data/adopters.json")
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (data) {
+        // Schema-agnostic: look for this feed's URL anywhere in the registry.
+        var listed = JSON.stringify(data).toLowerCase()
+          .indexOf(feedUrl.toLowerCase()) !== -1;
+        if (listed) return;
+        document.querySelector("h2").insertAdjacentHTML(
+          "beforebegin",
+          '<p class="banner">📣 This feed is not in the ' +
+            '<a href="https://opentechevents.org/data/adopters.json">OTE adopters registry</a> yet. ' +
+            '<a href="https://opentechevents.org/register/?feed=' + encodeURIComponent(feedUrl) + '">Register it</a> ' +
+            'so more directories, developers and users can discover it and import your events.</p>'
+        );
+      })
+      .catch(function () {});
+  })();
 </script>
 </body>
 </html>
