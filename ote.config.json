@@ -3,9 +3,9 @@
 
   "_comment_feed": "Metadata for your published feed (feed.json, ICS, RSS). Edit these three values after forking.",
   "feed": {
-    "title": "Sample Tech Community Events",
-    "description": "Talks, workshops and meetups organised by Sample Tech Community.",
-    "url": "https://sample-community.example",
+    "title": "hhkaos Community",
+    "description": "Talks, workshops and meetups organised by hhkaos.",
+    "url": "https://www.rauljimenez.info/",
     "license": "CC-BY-4.0"
   },
 
