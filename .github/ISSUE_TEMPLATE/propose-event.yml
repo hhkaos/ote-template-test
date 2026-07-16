@@ -1,0 +1,17 @@
+# Issue form used by the OTE editor's "propose change" flow. The editor
+# prefills this template via URL params; the `ote-event` label below is what
+# triggers the issue-to-pr workflow. The label must come from the template:
+# a `labels=` URL param only applies if the issue author has triage
+# permission on the repo, which event proposers normally don't.
+name: Propose an event
+description: Propose a new event or a change to an existing one. Prefer the editor linked from the dashboard — it fills this form for you.
+labels: [ote-event]
+body:
+  - type: textarea
+    id: event-json
+    attributes:
+      label: Event JSON
+      description: The full OTE event document. The editor generates this — you rarely need to write it by hand.
+      render: json
+    validations:
+      required: true

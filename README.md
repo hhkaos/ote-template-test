@@ -127,6 +127,13 @@ request, so mistakes can't reach your published feed. The **editor** linked
 from your dashboard (create/edit events via a form, proposed as a PR to your
 repo) is coming in phase 2.
 
+**Propose an event without touching JSON**: anyone can fill in the
+[OTE editor](https://tools.opentechevents.org/editor?repo=your-user/your-repo)
+(replace `your-user/your-repo` with your fork, or just follow the link from
+your dashboard). It generates the event JSON and opens a prefilled issue in
+your repo; a workflow validates it and turns it into a pull request for you
+to review and merge. No git, no JSON editing, no write access needed.
+
 ## Updates
 
 The thin workflows track `OpenTechEvents/ote-tools@main` (pinned to `@v1` once
