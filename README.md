@@ -58,7 +58,18 @@ a `docs/config.js` with one line:
 window.OTE_REPO = "your-user/your-repo";
 ```
 
-### 4. Edit `ote.config.json`
+### 4. Enable issues (optional, recommended)
+
+GitHub disables Issues on forks by default. If you want the community to be
+able to report mistakes or propose events — and to use the OTE editor's
+"propose change" flow, which delivers changes as prefilled issues — enable
+them: **Settings → General → Features → Issues**.
+
+This template ships a [CONTRIBUTING.md](CONTRIBUTING.md) that explains the
+contribution flow to visitors. Adapt it to your community, or delete it if
+you don't want contributions.
+
+### 5. Edit `ote.config.json`
 
 Set your feed's `title`, `description` and `url` (your community's website).
 
@@ -69,7 +80,7 @@ the point of a feed). If you want attribution, use
 [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). Any SPDX
 identifier or URL is accepted.
 
-### 5. Replace the sample events
+### 6. Replace the sample events
 
 Delete the files in [events/](events/) and add your own — one JSON file per
 event. Use the samples as a starting point; the full field reference is at
@@ -94,7 +105,7 @@ Every push validates your events and, if valid, rebuilds and redeploys your
 site: dashboard + `feed.json` + `feed.ics` + `feed.xml` at
 `https://<user>.github.io/<repo>/`. Deploys take a couple of minutes.
 
-### 6. Make your feed discoverable
+### 7. Make your feed discoverable
 
 Add this to the `<head>` of your community's website (if you have one):
 
@@ -103,7 +114,7 @@ Add this to the `<head>` of your community's website (if you have one):
       href="https://<user>.github.io/<repo>/feed.json">
 ```
 
-### 7. Register as an adopter
+### 8. Register as an adopter
 
 Add your community to the adopters list in
 [opentechevents-spec](https://github.com/OpenTechEvents/opentechevents-spec) so
