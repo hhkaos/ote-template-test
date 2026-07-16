@@ -3,7 +3,7 @@
 Fork this repository and get, with nothing but GitHub and GitHub Pages:
 
 - Your community's **[OTE](https://opentechevents.org) event feed** published at a public URL.
-- **iCalendar (`events.ics`)** and **RSS (`feed.xml`)** exports, rebuilt automatically on every change.
+- **iCalendar (`feed.ics`)** and **RSS (`feed.xml`)** exports, rebuilt automatically on every change.
 - A minimal **dashboard** linking to the central OTE tools (editor, import, publish).
 
 Your data stays in **your** repository, as plain JSON, under an open license.
@@ -36,16 +36,40 @@ git remote add upstream https://github.com/OpenTechEvents/ote-template
 git pull upstream main
 ```
 
-### 2. Enable GitHub Pages
+### 2. Enable workflows
+
+GitHub disables Actions on forks by default. In your fork, open the
+**Actions** tab and click **"I understand my workflows, go ahead and enable
+them"**. Without this, nothing gets validated or published.
+
+### 3. Enable GitHub Pages
 
 In your fork: **Settings → Pages → Source: GitHub Actions**.
 
-### 3. Edit `ote.config.json`
+Once the first deploy finishes, link the site from your repo so visitors find
+it: repo home → **About** (gear icon) → check **"Use your GitHub Pages
+website"**.
+
+**Custom domain?** If your Pages are served from your own domain instead of
+`*.github.io`, the dashboard can't detect the repository from the URL. Create
+a `docs/config.js` with one line:
+
+```js
+window.OTE_REPO = "your-user/your-repo";
+```
+
+### 4. Edit `ote.config.json`
 
 Set your feed's `title`, `description` and `url` (your community's website).
-Keep or change the `license` (it applies to your event *data*).
 
-### 4. Replace the sample events
+The `license` applies to your event *data*, not to the events. The template
+defaults to [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/)
+(public domain — most permissive, anyone can republish your events, which is
+the point of a feed). If you want attribution, use
+[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/). Any SPDX
+identifier or URL is accepted.
+
+### 5. Replace the sample events
 
 Delete the files in [events/](events/) and add your own — one JSON file per
 event. Use the samples as a starting point; the full field reference is at
@@ -58,7 +82,7 @@ event. Use the samples as a starting point; the full field reference is at
   "name": "September meetup",
   "startDate": "2026-09-24T19:00:00",
   "timezone": "Europe/Madrid",
-  "license": "CC-BY-4.0"
+  "license": "CC0-1.0"
 }
 ```
 
@@ -67,10 +91,10 @@ samples use `YYYY-MM-name.json` so files sort chronologically, but nothing
 depends on it: an event's identity is its `id` field, not its file name.
 
 Every push validates your events and, if valid, rebuilds and redeploys your
-site: dashboard + `feed.json` + `events.ics` + `feed.xml` at
+site: dashboard + `feed.json` + `feed.ics` + `feed.xml` at
 `https://<user>.github.io/<repo>/`. Deploys take a couple of minutes.
 
-### 5. Make your feed discoverable
+### 6. Make your feed discoverable
 
 Add this to the `<head>` of your community's website (if you have one):
 
@@ -79,7 +103,7 @@ Add this to the `<head>` of your community's website (if you have one):
       href="https://<user>.github.io/<repo>/feed.json">
 ```
 
-### 6. Register as an adopter
+### 7. Register as an adopter
 
 Add your community to the adopters list in
 [opentechevents-spec](https://github.com/OpenTechEvents/opentechevents-spec) so
@@ -105,5 +129,5 @@ git pull upstream main
 
 ## License
 
-Sample events and configuration: [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/).
+Sample events and configuration: [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/).
 Your own data: whatever `license` you declare in `ote.config.json` and your events.
