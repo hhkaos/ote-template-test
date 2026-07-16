@@ -1,0 +1,14 @@
+{
+  "_comment": "Your community's configuration. The central OTE tools (editor, publish, exports) read this file from your fork. Keys starting with '_' are comments — safe to delete.",
+
+  "_comment_feed": "Metadata for your published feed (feed.json, ICS, RSS). Edit these three values after forking.",
+  "feed": {
+    "title": "Sample Tech Community Events",
+    "description": "Talks, workshops and meetups organised by Sample Tech Community.",
+    "url": "https://sample-community.example",
+    "license": "CC-BY-4.0"
+  },
+
+  "_comment_profile": "Which fields the central editor shows. Presets: 'meetup' (no CFP/sponsor fields) | 'conference' | 'all'. Used from phase 2 onwards; harmless until then.",
+  "profile": "meetup"
+}

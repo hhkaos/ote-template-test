@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OTE Dashboard</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📅</text></svg>">
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 40rem; margin: 3rem auto; padding: 0 1rem; line-height: 1.5; color: #222; }
+  h1 { font-size: 1.4rem; }
+  ul { padding-left: 1.2rem; }
+  li { margin: .4rem 0; }
+  code { background: #f2f2f2; padding: .1rem .3rem; border-radius: 3px; }
+  footer { margin-top: 2rem; font-size: .85rem; color: #666; }
+  .warn { color: #a00; }
+</style>
+</head>
+<body>
+<h1>📅 Open Tech Events — dashboard</h1>
+<p>Repository: <strong id="repo">detecting…</strong></p>
+
+<h2>Your feed</h2>
+<ul>
+  <li><a href="feed.json">feed.json</a> — OTE feed</li>
+  <li><a href="events.ics">events.ics</a> — iCalendar (subscribe from any calendar app)</li>
+  <li><a href="feed.xml">feed.xml</a> — RSS</li>
+</ul>
+
+<h2>Tools</h2>
+<ul id="tools">
+  <li><a id="editor" href="#">Edit events</a> — create, edit or delete events without writing JSON</li>
+  <li><a id="import" href="#">Import</a> — bring events from an .ics file or an event page</li>
+  <li><a id="publish" href="#">Publish</a> — spread an event to other platforms</li>
+</ul>
+
+<footer>
+  Data lives in this repository as open JSON — see
+  <a href="https://opentechevents.org">opentechevents.org</a>.
+</footer>
+
+<!-- Optional: generated at build time for custom domains. Missing is fine. -->
+<script src="config.js" onerror="void 0"></script>
+<script>
+  // Repo detection: config.js (window.OTE_REPO) wins; otherwise derive it
+  // from the standard GitHub Pages URL: user.github.io/repo/
+  var repo = window.OTE_REPO || null;
+  if (!repo) {
+    var m = location.hostname.match(/^([^.]+)\.github\.io$/);
+    if (m) {
+      var seg = location.pathname.split("/").filter(Boolean)[0];
+      repo = m[1] + "/" + (seg || m[1] + ".github.io");
+    }
+  }
+  var el = document.getElementById("repo");
+  if (repo) {
+    el.textContent = repo;
+    var base = "https://tools.opentechevents.org/";
+    ["editor", "import", "publish"].forEach(function (t) {
+      document.getElementById(t).href = base + t + "?repo=" + encodeURIComponent(repo);
+    });
+  } else {
+    el.textContent = "unknown";
+    el.className = "warn";
+    document.getElementById("tools").insertAdjacentHTML(
+      "beforebegin",
+      '<p class="warn">Could not detect the repository from this URL. If you use a custom domain, add a <code>config.js</code> with <code>window.OTE_REPO = "user/repo"</code>.</p>'
+    );
+  }
+</script>
+</body>
+</html>

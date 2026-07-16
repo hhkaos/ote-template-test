@@ -1,0 +1,11 @@
+# Validates events/*.json and ote.config.json against the OTE spec.
+# All logic lives in OpenTechEvents/ote-tools — this file only calls it.
+# @main will become @v1 once the reusable workflows stabilise.
+name: Validate
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  validate:
+    uses: OpenTechEvents/ote-tools/.github/workflows/validate.yml@main

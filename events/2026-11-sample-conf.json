@@ -1,0 +1,18 @@
+{
+  "specVersion": "0.2.0",
+  "id": "https://sample-community.example/conf/2026",
+  "url": "https://sample-community.example/conf/2026",
+  "name": "SampleConf 2026",
+  "description": "Our annual community conference. Two days, two tracks, all levels welcome.",
+  "startDate": "2026-11-13",
+  "endDate": "2026-11-14",
+  "timezone": "Europe/Madrid",
+  "attendanceMode": "in-person",
+  "location": {
+    "venue": "Palacio de Congresos, Valencia"
+  },
+  "languages": ["es", "en"],
+  "tags": ["community", "conference"],
+  "status": "scheduled",
+  "license": "CC-BY-4.0"
+}
