@@ -11,7 +11,7 @@
   "location": {
     "onlineUrl": "https://meet.example/sample-community-workshop"
   },
-  "languages": ["es", "en"],
+  "languages": ["es"],
   "tags": ["git", "open-source"],
   "status": "scheduled",
   "license": "CC0-1.0"

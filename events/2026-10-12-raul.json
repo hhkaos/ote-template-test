@@ -1,0 +1,8 @@
+{
+  "specVersion": "0.2.0",
+  "id": "https://your-community.example/events/2026-09-meetup",
+  "name": "September meetup",
+  "startDate": "2026-09-24T19:00:00",
+  "timezone": "Europe/Madrid",
+  "license": "CC-BY-4.0"
+}
