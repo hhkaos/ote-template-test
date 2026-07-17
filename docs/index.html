@@ -27,16 +27,15 @@
 
 <h2>Your feed</h2>
 <ul>
-  <li><a href="feed.json">feed.json</a> — OTE feed</li>
-  <li><a href="feed.ics">feed.ics</a> — iCalendar (subscribe from any calendar app)</li>
-  <li><a href="feed.xml">feed.xml</a> — RSS</li>
+  <li><a href="feed.json">feed.json</a> — OTE feed (<a class="feed-preview" data-feed="feed.json" href="#">preview</a>)</li>
+  <li><a href="feed.ics">feed.ics</a> — iCalendar (subscribe from any calendar app) (<a class="feed-preview" data-feed="feed.ics" href="#">preview</a>)</li>
+  <li><a href="feed.xml">feed.xml</a> — RSS (<a class="feed-preview" data-feed="feed.xml" href="#">preview</a>)</li>
 </ul>
 
 <h2>Tools</h2>
 <ul id="tools">
   <li><a id="editor" href="#">Manage events</a> — create, import, edit or delete events from a simple UI</li>
   <li><a id="publish" href="#">Promote</a> — spread your event to other platforms</li>
-  <li><a id="preview" href="#">Preview feed</a> — human-readable view of your generated feeds</li>
 </ul>
 
 <footer>
@@ -63,7 +62,7 @@
     // Expose the detected repo for the central dashboard-checks.js script.
     window.OTE_REPO = repo;
     var base = "https://tools.opentechevents.org/";
-    ["editor", "publish", "preview"].forEach(function (t) {
+    ["editor", "publish"].forEach(function (t) {
       document.getElementById(t).href = base + t + "?repo=" + encodeURIComponent(repo);
     });
   } else {
@@ -74,6 +73,10 @@
       '<p class="warn">Could not detect the repository from this URL. If you use a custom domain, add a <code>config.js</code> with <code>window.OTE_REPO = "user/repo"</code>.</p>'
     );
   }
+  Array.prototype.forEach.call(document.querySelectorAll(".feed-preview"), function (link) {
+    var feedUrl = new URL(link.getAttribute("data-feed"), location.href).href;
+    link.href = "https://tools.opentechevents.org/preview?feed=" + encodeURIComponent(feedUrl);
+  });
 
   // Adopter registry check: if this feed isn't listed in the OTE adopters
   // registry, invite the organizer to register it. Fails silently (network
