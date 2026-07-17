@@ -1,0 +1,23 @@
+{
+  "id": "https://www.rauljimenez.info/events/2026-08-it-girls-bcn",
+  "url": "https://luma.com/8l8ofrry",
+  "name": "IT Girls BCN✨🍀",
+  "description": "☕💻 IT Girls Barcelona | Brunch & Coffee\nJoin us for a relaxed and welcoming brunch designed to connect women in tech and those interested in the industry.\nWhether you’re a software engineer, designer, data analyst, product manager, IT support professional, student, or simply curious about the tech world, this is a space to meet like-minded women, exchange experiences, expand your network, and make new friends in Barcelona.\nThere’s no agenda or formal presentations—just good coffee, great conversations, and a supportive community.\nAbout the organizer\nHi! I’m Ana Luiza, a Brazilian living in Barcelona and working in IT as a Product Support & Customer Support professional, with around 5 years of experience. I’m passionate about technology, continuous learning, and creating communities where women can connect, support each other, and grow together.\nI started IT Girls Barcelona because I believe that some of the best opportunities begin with a simple conversation. My goal is to create an inclusive, friendly, and inspiring space where everyone feels welcome, whether you’re just starting your career or already have years of experience.\nI look forward to meeting you over coffee! ☕💖",
+  "startDate": "2026-08-01T14:00:00",
+  "endDate": "2026-08-01T15:00:00",
+  "timezone": "Europe/Madrid",
+  "location": {
+    "venue": "Brunch and The City, Barcelona, Catalunya",
+    "geo": {
+      "lat": 41.382497799999996,
+      "lon": 2.1518509999999997
+    }
+  },
+  "attendanceMode": "in-person",
+  "status": "scheduled",
+  "source": {
+    "name": "Luma",
+    "url": "https://luma.com/8l8ofrry",
+    "retrievedAt": "2026-07-16T23:37:08.342Z"
+  }
+}
