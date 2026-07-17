@@ -20,6 +20,11 @@
 <h1>📅 Open Tech Events — dashboard</h1>
 <p>Repository: <strong id="repo">detecting…</strong></p>
 
+<!-- Mount point for the central dashboard checks (setup check + template-update
+     banner). Filled by dashboard-checks.js, served from the OTE tools. Empty if
+     that script is unavailable — the page works without it. -->
+<div id="ote-checks" aria-live="polite"></div>
+
 <h2>Your feed</h2>
 <ul>
   <li><a href="feed.json">feed.json</a> — OTE feed</li>
@@ -55,6 +60,8 @@
   var el = document.getElementById("repo");
   if (repo) {
     el.textContent = repo;
+    // Expose the detected repo for the central dashboard-checks.js script.
+    window.OTE_REPO = repo;
     var base = "https://tools.opentechevents.org/";
     ["editor", "publish", "preview"].forEach(function (t) {
       document.getElementById(t).href = base + t + "?repo=" + encodeURIComponent(repo);
@@ -106,5 +113,10 @@
       .catch(function () {});
   })();
 </script>
+
+<!-- Central dashboard checks: on-demand setup check + template-update banner.
+     Logic lives in OpenTechEvents/ote-tools so it improves without a fork pull.
+     Reads window.OTE_REPO, mounts into #ote-checks, fails silently if offline. -->
+<script defer src="https://tools.opentechevents.org/dashboard-checks.js" onerror="void 0"></script>
 </body>
 </html>
