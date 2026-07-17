@@ -65,6 +65,12 @@ able to report mistakes or propose events — and to use the OTE editor's
 "propose change" flow, which delivers changes as prefilled issues — enable
 them: **Settings → General → Features → Issues**.
 
+Then create the label the flow depends on — forks don't inherit labels, and
+GitHub silently ignores missing labels declared in issue forms, so without it
+proposed events never become pull requests. In your fork: **Issues → Labels →
+New label**, name it exactly `ote-event`. The propose-event issue form applies
+it, and the issue-to-pr workflow only reacts to issues carrying it.
+
 This template ships a [CONTRIBUTING.md](CONTRIBUTING.md) that explains the
 contribution flow to visitors. Adapt it to your community, or delete it if
 you don't want contributions.
