@@ -74,6 +74,14 @@
   (function () {
     if (/^(localhost|127\.|0\.0\.0\.0)/.test(location.hostname)) return;
     var feedUrl = new URL("feed.json", location.href).href;
+    // Community name + website from ote.config.json, to prefill the register
+    // form. Read via raw.githubusercontent (CORS open); needs the repo, so on
+    // an undetected custom domain the link degrades to just ?feed=.
+    var configReq = repo
+      ? fetch("https://raw.githubusercontent.com/" + repo + "/HEAD/ote.config.json")
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .catch(function () { return null; })
+      : Promise.resolve(null);
     fetch("https://opentechevents.org/data/adopters.json")
       .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
       .then(function (data) {
@@ -81,13 +89,19 @@
         var listed = JSON.stringify(data).toLowerCase()
           .indexOf(feedUrl.toLowerCase()) !== -1;
         if (listed) return;
-        document.querySelector("h2").insertAdjacentHTML(
-          "beforebegin",
-          '<p class="banner">📣 This feed is not in the ' +
-            '<a href="https://opentechevents.org/data/adopters.json">OTE adopters registry</a> yet. ' +
-            '<a href="https://opentechevents.org/register/?feed=' + encodeURIComponent(feedUrl) + '">Register it</a> ' +
-            'so more directories, developers and users can discover it and import your events.</p>'
-        );
+        return configReq.then(function (cfg) {
+          var f = (cfg && cfg.feed) || {};
+          var q = "?feed=" + encodeURIComponent(feedUrl);
+          if (f.title) q += "&name=" + encodeURIComponent(f.title);
+          if (f.url) q += "&url=" + encodeURIComponent(f.url);
+          document.querySelector("h2").insertAdjacentHTML(
+            "beforebegin",
+            '<p class="banner">📣 This feed is not in the ' +
+              '<a href="https://opentechevents.org/data/adopters.json">OTE adopters registry</a> yet. ' +
+              '<a href="https://opentechevents.org/register/' + q + '">Register it</a> ' +
+              'so more directories, developers and users can discover it and import your events.</p>'
+          );
+        });
       })
       .catch(function () {});
   })();
