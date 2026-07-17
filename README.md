@@ -71,6 +71,11 @@ proposed events never become pull requests. In your fork: **Issues → Labels �
 New label**, name it exactly `ote-event`. The propose-event issue form applies
 it, and the issue-to-pr workflow only reacts to issues carrying it.
 
+Finally, let Actions open the pull request: **Settings → Actions → General →
+Workflow permissions → check "Allow GitHub Actions to create and approve pull
+requests"**. Without this, a proposed event validates and its branch is pushed,
+but the workflow can't open the PR.
+
 This template ships a [CONTRIBUTING.md](CONTRIBUTING.md) that explains the
 contribution flow to visitors. Adapt it to your community, or delete it if
 you don't want contributions.
