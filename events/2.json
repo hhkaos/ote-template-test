@@ -1,0 +1,19 @@
+{
+  "id": "https://www.meetup.com/madridjs/events/315301228/2",
+  "url": "https://www.meetup.com/madridjs/events/315301228/",
+  "name": "JavaScript al Servicio de tus Presentaciones",
+  "description": "¿Por qué usar Powerpoint, Keynote o Google Slides pudiendo aprovechar todas las posibilidades de la web? La accesibilidad e interoperabilidad de HTML, la v",
+  "startDate": "2026-06-25T19:00:00",
+  "endDate": "2026-06-25T21:00:00",
+  "timezone": "Europe/Madrid",
+  "location": {
+    "onlineUrl": "https://www.meetup.com/madridjs/events/315301228/"
+  },
+  "attendanceMode": "online",
+  "status": "scheduled",
+  "source": {
+    "name": "Meetup",
+    "url": "https://www.rauljimenez.info/events/2026-06-javascript-al-servicio-de-tus-presentaciones",
+    "retrievedAt": "2026-07-17T07:43:05.951Z"
+  }
+}
